@@ -1,0 +1,113 @@
+mysql> use university;
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_university |
++----------------------+
+| mentee_details       |
+| staff_details        |
+| stud_department      |
+| stud_details         |
++----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select*from mentee_details;
++-----------+--------------+-------+-----------+------------+
+| regno     | name         | dept  | address   | fathername |
++-----------+--------------+-------+-----------+------------+
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |
+| 192211777 | Udhai        | EEE   | Kerala    | Chandra    |
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |
+| 192211333 | Keerthi      | CSE   | Rajempeta | Sivaprasad |
++-----------+--------------+-------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select*from mentee_details where dept="CSE";
++-----------+--------------+------+-----------+------------+
+| regno     | name         | dept | address   | fathername |
++-----------+--------------+------+-----------+------------+
+| 192211666 | Bhannu       | CSE  | kadapa    | Subbareddy |
+| 192211333 | Keerthi      | CSE  | Rajempeta | Sivaprasad |
++-----------+--------------+------+-----------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select*from mentee_details where name="Neelufar";
++-----------+----------+------+---------+------------+
+| regno     | name     | dept | address | fathername |
++-----------+----------+------+---------+------------+
+| 192211555 | Neelufar | BIO  | Nellore | Mahammad   |
++-----------+----------+------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> alter table mentee_details add marks int(4);
+Query OK, 6 rows affected (0.06 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> update mentee_details set marks=98 where dept="AI&ML";
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentee_details set marks=99 where dept="BIO";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentee_details set marks=96 where name="Bhannu";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentee_details set marks=96 where name="Udhai";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentee_details set marks=92 where name="hariram";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentee_details set marks=94 where name="Keerthi";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mentee_details;
++-----------+--------------+-------+-----------+------------+-------+
+| regno     | name         | dept  | address   | fathername | marks |
++-----------+--------------+-------+-----------+------------+-------+
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |    98 |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |    99 |
+| 192211777 | Udhai        | EEE   | Kerala    | Chandra    |    96 |
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |    92 |
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |    96 |
+| 192211333 | Keerthi      | CSE   | Rajempeta | Sivaprasad |    94 |
++-----------+--------------+-------+-----------+------------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select*from mentee_details where name like 'U%';
++-----------+-------+------+---------+------------+-------+
+| regno     | name  | dept | address | fathername | marks |
++-----------+-------+------+---------+------------+-------+
+| 192211777 | Udhai | EEE  | Kerala  | Chandra    |    96 |
++-----------+-------+------+---------+------------+-------+
+1 row in set (0.04 sec)
+
+mysql> select*from mentee_details where dept like '%I%';
++-----------+----------+-------+-----------+------------+-------+
+| regno     | name     | dept  | address   | fathername | marks |
++-----------+----------+-------+-----------+------------+-------+
+| 192211444 | Pallavi  | AI&ML | Nellore   | vardareddy |    98 |
+| 192211555 | Neelufar | BIO   | Nellore   | Mahammad   |    99 |
+| 192211888 | Hariram  | AI&DS | Tamilnadu | Rama       |    92 |
++-----------+----------+-------+-----------+------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select*from mentee_details where address like '_________a';
+Empty set (0.00 sec)
+
+mysql> select*from mentee_details where address like '_____a';
++-----------+--------------+------+---------+------------+-------+
+| regno     | name         | dept | address | fathername | marks |
++-----------+--------------+------+---------+------------+-------+
+| 192211777 | Udhai        | EEE  | Kerala  | Chandra    |    96 |
+| 192211666 | Bhannu       | CSE  | kadapa  | Subbareddy |    96 |
++-----------+--------------+------+---------+------------+-------+
+2 rows in set (0.00 sec)
