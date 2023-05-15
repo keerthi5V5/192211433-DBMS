@@ -1,3 +1,4 @@
+#DDL Commands with constraints-PRIMARY,FOREIGN KEY,UNIQUE,CHECK
 mysql> create database university;
 Query OK, 1 row affected (0.04 sec)
 
