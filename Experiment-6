@@ -1,0 +1,120 @@
+mysql> use university;
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_university |
++----------------------+
+| mentee_details       |
+| staff_details        |
+| stud_department      |
+| stud_details         |
++----------------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table mentee_details add subject varchar(20);
+Query OK, 6 rows affected (0.05 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> update mentee_details set subject="MPMC" where dept="AI&ML";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentee_details set subject="FOC" where dept="CSE";
+Query OK, 2 rows affected (0.04 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update mentee_details set subject="Cell Biology" where dept="BIO";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentee_details set subject="DBMS" where dept="EEE";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentee_details set subject="PDSD" where dept="AI&DS";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mentee_details;
++-----------+--------------+-------+-----------+------------+-------+--------------+
+| regno     | name         | dept  | address   | fathername | marks | subject      |
++-----------+--------------+-------+-----------+------------+-------+--------------+
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |    98 | MPMC         |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |    99 | Cell Biology |
+| 192211777 | Udhai        | EEE   | Kerala    | Chandra    |    96 | DBMS         |
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |    92 | PDSD         |
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |    96 | FOC          |
+| 192211333 | Keerthi      | CSE   | Rajempeta | Sivaprasad |    94 | FOC          |
++-----------+--------------+-------+-----------+------------+-------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> select*from mentee_details where marks BETWEEN 95 and 99;
++-----------+--------------+-------+---------+------------+-------+--------------+
+| regno     | name         | dept  | address | fathername | marks | subject      |
++-----------+--------------+-------+---------+------------+-------+--------------+
+| 192211444 | Pallavi      | AI&ML | Nellore | vardareddy |    98 | MPMC         |
+| 192211555 | Neelufar     | BIO   | Nellore | Mahammad   |    99 | Cell Biology |
+| 192211777 | Udhai        | EEE   | Kerala  | Chandra    |    96 | DBMS         |
+| 192211666 | Bhannu       | CSE   | kadapa  | Subbareddy |    96 | FOC          |
++-----------+--------------+-------+---------+------------+-------+--------------+
+4 rows in set (0.05 sec)
+
+mysql> select*from mentee_details where subject IN('BIOEVS');
+Empty set (0.00 sec)
+
+mysql> select*from mentee_details where subject IN('CELL BIOLOGY');
++-----------+----------+------+---------+------------+-------+--------------+
+| regno     | name     | dept | address | fathername | marks | subject      |
++-----------+----------+------+---------+------------+-------+--------------+
+| 192211555 | Neelufar | BIO  | Nellore | Mahammad   |    99 | Cell Biology |
++-----------+----------+------+---------+------------+-------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select*from mentee_details where marks NOT BETWEEN 95 and 99;
++-----------+---------+-------+-----------+------------+-------+---------+
+| regno     | name    | dept  | address   | fathername | marks | subject |
++-----------+---------+-------+-----------+------------+-------+---------+
+| 192211888 | Hariram | AI&DS | Tamilnadu | Rama       |    92 | PDSD    |
+| 192211333 | Keerthi | CSE   | Rajempeta | Sivaprasad |    94 | FOC     |
++-----------+---------+-------+-----------+------------+-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select sum(marks) from mentee_details where dept="EEE";
++------------+
+| sum(marks) |
++------------+
+|         96 |
++------------+
+1 row in set (0.04 sec)
+
+mysql> select sum(marks) from mentee_details where dept="CSE";
++------------+
+| sum(marks) |
++------------+
+|        190 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(marks) as average from mentee_details;
++---------+
+| average |
++---------+
+| 95.8333 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select min(marks) as minimum from mentee_details;
++---------+
+| minimum |
++---------+
+|      92 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select max(marks) as maximum from mentee_details;
++---------+
+| maximum |
++---------+
+|      99 |
++---------+
+1 row in set (0.01 sec)
