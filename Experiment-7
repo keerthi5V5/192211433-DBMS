@@ -1,0 +1,73 @@
+mysql> use university;
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_university |
++----------------------+
+| mentee_details       |
+| staff_details        |
+| stud_department      |
+| stud_details         |
++----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select*from mentee_details;
++-----------+--------------+-------+-----------+------------+-------+--------------+
+| regno     | name         | dept  | address   | fathername | marks | subject      |
++-----------+--------------+-------+-----------+------------+-------+--------------+
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |    98 | MPMC         |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |    99 | Cell Biology |
+| 192211777 | Udhai        | EEE   | Kerala    | Chandra    |    96 | DBMS         |
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |    92 | PDSD         |
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |    96 | FOC          |
+| 192211333 | Keerthi      | CSE   | Rajempeta | Sivaprasad |    94 | FOC          |
++-----------+--------------+-------+-----------+------------+-------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> select*from mentee_details order by name;
++-----------+--------------+-------+-----------+------------+-------+--------------+
+| regno     | name         | dept  | address   | fathername | marks | subject      |
++-----------+--------------+-------+-----------+------------+-------+--------------+
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |    96 | FOC          |
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |    92 | PDSD         |
+| 192211333 | Keerthi      | CSE   | Rajempeta | Sivaprasad |    94 | FOC          |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |    99 | Cell Biology |
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |    98 | MPMC         |
+| 192211777 | Udhai        | EEE   | Kerala    | Chandra    |    96 | DBMS         |
++-----------+--------------+-------+-----------+------------+-------+--------------+
+6 rows in set (0.01 sec)
+
+mysql> select*from mentee_details group by marks;
++-----------+----------+-------+-----------+------------+-------+--------------+
+| regno     | name     | dept  | address   | fathername | marks | subject      |
++-----------+----------+-------+-----------+------------+-------+--------------+
+| 192211888 | Hariram  | AI&DS | Tamilnadu | Rama       |    92 | PDSD         |
+| 192211333 | Keerthi  | CSE   | Rajempeta | Sivaprasad |    94 | FOC          |
+| 192211777 | Udhai    | EEE   | Kerala    | Chandra    |    96 | DBMS         |
+| 192211444 | Pallavi  | AI&ML | Nellore   | vardareddy |    98 | MPMC         |
+| 192211555 | Neelufar | BIO   | Nellore   | Mahammad   |    99 | Cell Biology |
++-----------+----------+-------+-----------+------------+-------+--------------+
+5 rows in set (0.01 sec)
+
+mysql> select*from mentee_details group by dept;
++-----------+--------------+-------+-----------+------------+-------+--------------+
+| regno     | name         | dept  | address   | fathername | marks | subject      |
++-----------+--------------+-------+-----------+------------+-------+--------------+
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |    92 | PDSD         |
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |    98 | MPMC         |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |    99 | Cell Biology |
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |    96 | FOC          |
+| 192211777 | Udhai        | EEE   | Kerala    | Chandra    |    96 | DBMS         |
++-----------+--------------+-------+-----------+------------+-------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select*from mentee_details having marks>95;
++-----------+--------------+-------+---------+------------+-------+--------------+
+| regno     | name         | dept  | address | fathername | marks | subject      |
++-----------+--------------+-------+---------+------------+-------+--------------+
+| 192211444 | Pallavi      | AI&ML | Nellore | vardareddy |    98 | MPMC         |
+| 192211555 | Neelufar     | BIO   | Nellore | Mahammad   |    99 | Cell Biology |
+| 192211777 | Udhai        | EEE   | Kerala  | Chandra    |    96 | DBMS         |
+| 192211666 | Bhannu       | CSE   | kadapa  | Subbareddy |    96 | FOC          |
++-----------+--------------+-------+---------+------------+-------+--------------+
+4 rows in set (0.00 sec)
