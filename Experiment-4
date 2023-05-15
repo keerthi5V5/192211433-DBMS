@@ -1,0 +1,62 @@
+mysql> use university;
+Database changed
+mysql> select*from mentee_details;
++-----------+--------------+-------+-----------+------------+
+| regno     | name         | dept  | address   | fathername |
++-----------+--------------+-------+-----------+------------+
+| 192211333 | Keerthi      | CSE   | Kadapa    | Sivaprasad |
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |
+| 192211777 | Udhai        | CSE   | Kerala    | Chandra    |
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |
++-----------+--------------+-------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update mentee_details set dept="EEE" where regno=192211777;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mentee_details;
++-----------+--------------+-------+-----------+------------+
+| regno     | name         | dept  | address   | fathername |
++-----------+--------------+-------+-----------+------------+
+| 192211333 | Keerthi      | CSE   | Kadapa    | Sivaprasad |
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |
+| 192211777 | Udhai        | EEE   | Kerala    | Chandra    |
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |
++-----------+--------------+-------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update mentee_details set address="Rajempeta" where fathername="Sivaprasad";
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mentee_details;
++-----------+--------------+-------+-----------+------------+
+| regno     | name         | dept  | address   | fathername |
++-----------+--------------+-------+-----------+------------+
+| 192211333 | Keerthi      | CSE   | Rajempeta | Sivaprasad |
+| 192211444 | Pallavi      | AI&ML | Nellore   | vardareddy |
+| 192211555 | Neelufar     | BIO   | Nellore   | Mahammad   |
+| 192211666 | Bhannu       | CSE   | kadapa    | Subbareddy |
+| 192211777 | Udhai        | EEE   | Kerala    | Chandra    |
+| 192211888 | Hariram      | AI&DS | Tamilnadu | Rama       |
++-----------+--------------+-------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> delete from mentee_details where dept="CSE";
+Query OK, 2 rows affected (0.05 sec)
+
+mysql> select*from mentee_details;
++-----------+----------+-------+-----------+------------+
+| regno     | name     | dept  | address   | fathername |
++-----------+----------+-------+-----------+------------+
+| 192211444 | Pallavi  | AI&ML | Nellore   | vardareddy |
+| 192211555 | Neelufar | BIO   | Nellore   | Mahammad   |
+| 192211777 | Udhai    | EEE   | Kerala    | Chandra    |
+| 192211888 | Hariram  | AI&DS | Tamilnadu | Rama       |
++-----------+----------+-------+-----------+------------+
+4 rows in set (0.00 sec)
